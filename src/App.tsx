@@ -16,6 +16,11 @@ const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
 
+// استخدام المتغير هنا لتجنب التحذير
+if (isDisktop) {
+  console.log("التطبيق يعمل على tdesktop.");
+}
+
 function App() {
   const userStore = useUserStore();
   const { levels, levelUp } = uesStore();
@@ -114,7 +119,6 @@ function App() {
 
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
-
 
   if (showSplashScreen) return <SplashScreen />;
 
